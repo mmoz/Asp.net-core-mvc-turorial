@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Product>;
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if(Model.Count()>0)
+{
+    <h1>หน้าแรก</h1>
+
+    <table class="table">
+
+       <tr>
+            <th>รหัส</th>
+@*            <th>รูปภาพ</th>
+*@            <th>ชื่อ</th>
+            <th>รายละเอียด</th>
+            <th>ราคา</th>
+            <th>เพิ่มข้อมูล</th>
+            <th>แก้ไข</th>
+            <th>ลบ</th>
+
+        </tr>
+        @foreach (var row in Model)
+        {
+
+            <tr>
+                <td>@row.Id</td>
+@*                <td>@row.Image</td>
+*@              <td>@row.Name</td>
+                <td>@row.Description</td>
+                <td>@row.Price</td>
+                <td><a class="btn-dark" asp-controller="personal" asp-action="Add">เพิ่มข้อมูล</a></td>
+                <td><a class="btn-dark" asp-controller="personal" asp-action="Edit" asp-route-id="@row.Id">แก้ไข</a></td>
+                <td>
+                    <a class="btn-dark" asp-controller="personal" asp-action="Delete" asp-route-id="@row.Id" onclick="return confirm('คุณแน่ใจที่จะลบ @row.Name ใช่ไหม')">ลบ</a>
+                </td>
+
+            </tr>
+
+
+
+
+        }
+    </table>
+
+
+}
+else{
+    <div class="alert alert-danger">ไม่มีข้อมูลในระบบ</div>
+}
+
+
+
+

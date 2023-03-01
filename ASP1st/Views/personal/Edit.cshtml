@@ -1,0 +1,31 @@
+﻿
+@model Product;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>แก้ไขข้อมูล</h1>
+
+<form method="post" asp-controller="Personal" asp-action="Edit">
+    <div class="form group">
+        <label asp-for="Name"></label>
+        <input type="text" asp-for="Name" class="form-control" />
+
+
+    </div>
+
+    <div class="form group">
+        <label asp-for="Description"></label>
+        <input type="text" asp-for="Description" class="form-control" />
+
+    </div>
+
+    <div class="form group">
+        <label asp-for="Price"></label>
+        <input type="number" asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn-primary">บันทึก</button>
+
+
+</form>
